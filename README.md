@@ -55,6 +55,17 @@ Workspaces und `personal/` werden lokal an ihren Platz geklont und sind im Haupt
 
 **`personal/` enthält Wege, keine Inhalte:** Fundstellen beschreiben, wo und wie man etwas findet (Collection, Filter, Abfrage, Quelle als ID) – nie die Fakten selbst. Ohne die Logins des Inhabers sind sie wertlos. Ergebnisse von Kunden- und Projektarbeit gehören in den Workspace.
 
+### Synchronisieren
+
+- **GitHub ist die einzige Quelle.** Gültig ist, was auf `main` des Firmen-Repos und der Workspace-Repos steht.
+- **`brain sync`** (Claude Code: automatisch bei jedem Sitzungsstart) holt Hauptrepo, `personal/` und alle geklonten Workspaces (`git pull --ff-only`) und erzeugt danach die Übersichten lokal neu. Offline arbeitet die Harness mit dem letzten Stand.
+- **Eigene Änderungen gehen nie automatisch raus.** Persönliches wird direkt ins private `brain-personal` gepusht. Alles Geteilte durchläuft das **Review in der Harness**: Die Harness ermittelt per GitHub-API, wer jede neue oder geänderte Datei sehen wird, zeigt dem Menschen eine Tabelle *Datei · neu/geändert · was · sichtbar für* und reicht erst nach seinem ausdrücklichen Ja einen Pull Request mit genau dieser Tabelle ein (`public/brain/einreichen`).
+- **Kollegen** bekommen neue Inhalte beim nächsten `brain sync`, sobald der Pull Request gemerged ist.
+
+### Abläufe und wiederkehrende Aufgaben
+
+Abläufe (`templates/ablauf.md`) haben `ausloeser` (Sätze, mit denen man die Aufgabe anstößt), Schritte mit konkreten Befehlen und optional `rhythmus` + `zustaendig` („monatlich am 14.“). Die Harness findet zu einer Aufgabe den passenden Ablauf über die Auslöser und nennt beim Sitzungsstart, was fällig ist. Fragen der Menschen zum Brain selbst (Kollegen einbinden, Sync, wiederkehrende Aufgaben, Rechte, Workspaces, Updates) beantwortet sie aus `public/brain/faq/`.
+
 ### Lokal erzeugt, nie eingecheckt
 
 | Datei | Inhalt |

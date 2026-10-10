@@ -8,7 +8,8 @@ Du bist die Harness eines Mitarbeiters dieser Firma. Dieses Verzeichnis ist das 
 2. `_perspektive.md`: was dein Mensch mit seinen Logins sieht (Workspaces, Qdrant-Collections, SharePoint-Sites, gültige Logins). Versuch nichts, was dort fehlt.
    **Ein Kunde, Projekt oder Bereich, der nicht in `_workspaces.md` steht, ist für deinen Menschen nicht sichtbar.** Such nicht weiter (auch nicht in Qdrant oder SharePoint), sondern sag: „Dazu sehe ich nichts; vermutlich kein Zugang.“
 3. `regeln-firma.md`: Regeln dieser Firma. Sie gelten zusätzlich zu dieser Datei.
-4. Dann gezielt weiter, nie das ganze Brain laden.
+4. Fällige wiederkehrende Aufgaben: `rg -l "^zustaendig: .*<github-account deines Menschen>" public workspaces personal` und bei den Treffern `rhythmus` prüfen; was heute oder in den nächsten 3 Tagen fällig ist, nennst du deinem Menschen zu Beginn.
+5. Dann gezielt weiter, nie das ganze Brain laden.
 
 ## Suchen: Trampolin für Trampolin
 
@@ -18,7 +19,9 @@ Jeder Ordner mit `README.md` ist ein **Knoten**. Seine Kinder stehen in `_kinder
 | --- | --- |
 | einen festen Schlüssel (Projektnummer, Normnummer, Tool-Name, Fehlercode, Kürzel) | `rg -i "<schlüssel>" _katalog/` (nicht ganz lesen) → Knoten |
 | eine Frage zu einem Kunden, Projekt oder Auftrag | `_workspaces.md` → Workspace → `_kinder.md` |
+| eine Aufgabe, für die es einen festen Ablauf geben könnte | `rg -i "ausloeser:.*<stichwort>" public workspaces personal`, sonst `public/ablaeufe/_kinder.md` |
 | eine Frage, wie die Firma arbeitet (Abläufe, Rollen, Regeln) | `public/_kinder.md` |
+| eine Frage deines Menschen zum Brain selbst („wie bekommen Kollegen das auch?“, „wie funktioniert sync?“, „wie lege ich eine wiederkehrende Aufgabe an?“) | `public/brain/faq/_kinder.md` |
 | ein Problem mit einem Programm oder Zugang | `tools/<tool>/` → `debugging/` |
 | eine Frage, wo welche Daten technisch liegen | `systeme/_kinder.md` |
 | „wie hatte ich nochmal …“, „wo finde ich wieder …“, eine Frage, die dein Mensch schon einmal recherchiert hat | **zuerst** `personal/fundstellen/_kinder.md`; die Fundstelle enthält auch, was nicht funktioniert hat |
@@ -58,7 +61,7 @@ Die erste passende Zeile entscheidet:
 
 **Nie ins Brain:** Zugangsdaten (nur ihr Ort), personenbezogene Daten von Kunden, Kandidaten, Patienten oder Mitarbeitern (nur als ID ins Fachsystem), längere wörtliche Zitate aus Archivdokumenten, Dateien aus dem Archiv.
 
-Wie ein Knoten aufgebaut ist: `public/brain/konventionen/README.md`. Vorlagen: `templates/`.
+Wie ein Knoten aufgebaut ist: `public/brain/konventionen/README.md`. Vorlagen: `templates/` (für Abläufe und wiederkehrende Aufgaben: `templates/ablauf.md` mit `ausloeser`, `rhythmus`, `zustaendig`).
 
 ## Aufgabe abschließen
 
@@ -68,7 +71,7 @@ Hat die Aufgabe etwas gefunden, das die Landkarte nicht kannte:
 2. Der Weg dorthin → Fundstelle in `personal/fundstellen/` (Vorlage `templates/fundstelle.md`).
 3. Neues Problem mit einem Tool gelöst → Fehlerbild in `tools/<tool>/debugging/`.
 
-Zeig deinem Menschen vor dem Einreichen, wer jede geänderte Datei danach sehen kann.
+**Einreichen nur nach `public.brain.einreichen`:** Sichtbarkeit per `gh api` ermitteln, deinem Menschen die Tabelle Datei | neu/geändert | was | sichtbar für zeigen, auf ein ausdrückliches Ja warten, erst dann Branch und Pull Request mit genau dieser Tabelle. Nie Leserkreise raten.
 
 ## Regeln
 
