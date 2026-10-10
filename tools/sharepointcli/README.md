@@ -4,7 +4,7 @@ owner: framework
 scope: public
 status: accepted
 summary: sharepointcli: Zugriff auf SharePoint mit dem Microsoft-Login des Menschen – Sites finden, Ordner auflisten, Dateien holen und als Text lesen.
-evidence: [servas brain v0.1]
+evidence: [brain v0.1]
 review_by: 2027-10-10
 keys: [sharepointcli, SharePoint, OneDrive, Graph]
 ---

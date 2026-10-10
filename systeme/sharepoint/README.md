@@ -4,7 +4,7 @@ owner: framework
 scope: public
 status: accepted
 summary: SharePoint-Tenant der Firma: Tenant-ID, Client-ID für sharepointcli, wichtige Sites und das Referenzformat.
-evidence: [servas brain v0.1]
+evidence: [brain v0.1]
 review_by: 2027-10-10
 keys: [SharePoint]
 ---

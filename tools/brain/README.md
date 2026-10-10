@@ -4,7 +4,7 @@ owner: framework
 scope: public
 status: accepted
 summary: brain: hält das Brain aktuell (sync), prüft es (check), klont Workspace-Zellen und diagnostiziert die Installation (doctor).
-evidence: [servas brain v0.1]
+evidence: [brain v0.1]
 review_by: 2027-10-10
 keys: [brain, brain sync, brain check]
 ---

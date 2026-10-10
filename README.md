@@ -4,15 +4,15 @@ owner: framework
 scope: public
 status: accepted
 summary: Das Brain der Firma – Landkarte und Betriebshandbuch für KI-Harnesses; Einstieg über AGENTS.md.
-evidence: [servas brain v0.1]
+evidence: [brain v0.1]
 review_by: 2027-10-10
 ---
 
-# servas brain
+# brain
 
 **Ein firmenweites Second Brain für KI-Harnesses.** Claude Code, Codex & Co. wissen damit, *wo* das Wissen der Firma liegt, *wie* man drankommt und *welcher Ablauf* zu einer Aufgabe passt – und jeder Mitarbeiter sieht nur, wofür er Rechte hat.
 
-> **Kurzfassung für Menschen:** Gib deiner Harness diesen Link und sag: *„Richte das servas brain auf meinem Rechner ein, laut README.“* Die Harness erledigt den Rest und fragt dich nur, wenn sie etwas von dir braucht (Logins, Firmenangaben).
+> **Kurzfassung für Menschen:** Gib deiner Harness diesen Link und sag: *„Richte das brain auf meinem Rechner ein, laut README.“* Die Harness erledigt den Rest und fragt dich nur, wenn sie etwas von dir braucht (Logins, Firmenangaben).
 
 ---
 
@@ -97,7 +97,7 @@ Dateinamen: `<tool>_<os>_<arch>.zip` (Windows) bzw. `<tool>_<os>_<arch>.tar.gz` 
 
 ```powershell
 $arch = if ($env:PROCESSOR_ARCHITECTURE -eq 'ARM64') { 'arm64' } else { 'amd64' }
-$bin  = "$env:LOCALAPPDATA\Programs\servas-brain\bin"
+$bin  = "$env:LOCALAPPDATA\Programs\brain\bin"
 New-Item -ItemType Directory -Force -Path $bin | Out-Null
 foreach ($t in 'brain-cli:brain','sharepointcli:sharepointcli','qdrantcli:qdrantcli') {
   $repo, $tool = $t.Split(':')
@@ -269,4 +269,4 @@ Version **0.1** (Oktober 2026).
 
 ---
 
-servas · Lizenz: MIT
+Lizenz: MIT

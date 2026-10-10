@@ -4,7 +4,7 @@ owner: framework
 scope: public
 status: accepted
 summary: Qdrant-Instanz der Firma: URL, wie Mitarbeiter ihren persönlichen Token bekommen, Embedding-Einstellung und offene Collections.
-evidence: [servas brain v0.1]
+evidence: [brain v0.1]
 review_by: 2027-10-10
 keys: [Qdrant]
 ---

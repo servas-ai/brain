@@ -4,7 +4,7 @@ owner: framework
 scope: public
 status: accepted
 summary: qdrantcli: Vektorsuche in der Qdrant-Instanz der Firma mit dem eigenen Token des Menschen – Collections, Payload-Filter, Textsuche.
-evidence: [servas brain v0.1]
+evidence: [brain v0.1]
 review_by: 2027-10-10
 keys: [qdrantcli, Qdrant, Vektorsuche]
 ---
