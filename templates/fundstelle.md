@@ -20,4 +20,4 @@ Nur Wege, keine Inhalte: keine gefundenen Fakten, keine Zitate, keine Kundenname
 | Collection / Site | <name oder id> |
 | Filter / Abfrage | <was getragen hat> |
 | Was nicht trug | <Abfragen, die nur Rauschen brachten> |
-| Maßgebliche Quelle | <ID der Sammlung oder des Dokuments> |
+| Maßgebliche Quelle | <id der Sammlung oder ID-Referenz nach `systeme.sharepoint.referenzformat`> |

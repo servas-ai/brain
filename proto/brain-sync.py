@@ -144,11 +144,24 @@ def write_katalog(root):
     os.makedirs(kd, exist_ok=True)
     for old in os.listdir(kd):
         os.remove(os.path.join(kd, old))
+    for kind, items in list(entries.items()):
+        if len(items) > 150:
+            del entries[kind]
+            for it in items:
+                ch = it[0][:1].lower()
+                entries[f"{kind}-{ch if ch.isalpha() else '0-9'}"].append(it)
     with open(os.path.join(kd, "README.md"), "w", encoding="utf-8") as f:
         f.write("# Katalog\n\nLokal erzeugt aus den `keys` aller Knoten, die du sehen darfst. Nicht ändern. "
                 "Wähle die Datei nach der Art deines Schlüssels:\n\n")
         for kind in sorted(entries):
             f.write(f"- [{kind}]({kind}.md): {len(entries[kind])} Einträge\n")
+    for kind, items in list(entries.items()):
+        if len(items) > 150:
+            del entries[kind]
+            for it in items:
+                ch = it[0][:1].lower()
+                grp = ch if ch.isalpha() else "0-9"
+                entries[f"{kind}-{grp}"].append(it)
     for kind, items in entries.items():
         with open(os.path.join(kd, f"{kind}.md"), "w", encoding="utf-8") as f:
             f.write(f"# Katalog: {kind}\n\n| Schlüssel | Knoten | Worum es geht |\n| --- | --- | --- |\n")

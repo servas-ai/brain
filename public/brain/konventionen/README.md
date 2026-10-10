@@ -62,7 +62,7 @@ Workspaces und `personal/` sind eigene Git-Repos, die lokal an ihren Platz geklo
 
 ## Verweise
 
-Auf andere Knoten per `id` in Backticks. Richtung: `personal` → `workspaces` → `public` → `tools` → `systeme`. Ein Knoten im Hauptrepo nennt nie einen Workspace; ein Workspace nennt nie `personal`.
+Auf andere Knoten per `id` in Backticks. Auf Archivdokumente und -ordner per ID-Referenz; das Format steht in `systeme.sharepoint.referenzformat`. Richtung: `personal` → `workspaces` → `public` → `tools` → `systeme`. Ein Knoten im Hauptrepo nennt nie einen Workspace; ein Workspace nennt nie `personal`.
 
 ## Überholtes
 
