@@ -25,6 +25,8 @@ Jeder Ordner mit `README.md` ist ein **Knoten**. Seine Kinder stehen in `_kinder
 
 Reihenfolge, wenn die Landkarte nichts hat: 1. Landkarte, 2. eigene Fundstellen in `personal/fundstellen/`, 3. Qdrant (`tools/qdrant`), 4. Archiv direkt (`tools/sharepoint`). Volltextsuche (`rg`) über das Brain ist erlaubt, aber erst nach den Trampolinen; Treffer mit `status: superseded` gelten nicht.
 
+Umschreibt die Frage ein Projekt nur („das Feuerwehrhaus südlich von Regensburg“) und passen mehrere oder keines sicher: frag nach, statt ein Projekt zu raten.
+
 Ein 403 oder „nicht gefunden“ bei SharePoint oder Qdrant heißt meist: dein Mensch hat dort keinen Zugang. Das ist kein Fehler. Sag es ihm, statt Umwege zu suchen.
 
 ## Bereiche
