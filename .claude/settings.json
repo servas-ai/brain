@@ -1,0 +1,7 @@
+{
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [ { "type": "command", "command": "brain sync || echo 'brain sync fehlgeschlagen – siehe tools/brain/README.md'" } ] }
+    ]
+  }
+}
