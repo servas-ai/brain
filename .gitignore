@@ -1,0 +1,8 @@
+# Zellen (eigene Repos, lokal geklont)
+/workspaces/*/
+/personal/
+# lokal erzeugt
+_perspektive.md
+_workspaces.md
+_katalog/
+_kinder.md

@@ -1,0 +1,7 @@
+# Lokal erzeugte Dateien und geklonte Zellen sind gitignored, sollen aber von rg / Grep der Harness gefunden werden.
+!workspaces/
+!personal/
+!_perspektive.md
+!_workspaces.md
+!_katalog/
+!**/_kinder.md

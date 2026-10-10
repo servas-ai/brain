@@ -1,0 +1,7 @@
+# .cell.yml einer Workspace-Zelle
+titel: <Anzeigename>
+satz: <ein Satz, worum es geht>
+art: kunde | projekt | auftrag | bereich
+status: aktiv | ruhend | archiviert
+phase: <frei, z. B. LP5 Ausführungsplanung>
+keys: [<Projektnummer>, <Ortsname>, <Kürzel>]
