@@ -216,7 +216,7 @@ Einmal pro Firma, durch eine Person mit Admin-Rechten (die Harness kann dabei he
    ```
    Branch-Schutz für `main` (Änderungen nur per Pull Request).
 3. **Workspaces:** je Kunde/Projekt/Auftrag/vertraulichem Bereich ein privates Repo `ws-<slug>` mit Topic `brain-cell`, einer `.cell.yml` (`templates/cell.yml`) und einer `README.md` (`templates/workspace-README.md`); Zugriff über ein GitHub-Team.
-4. **SharePoint (für `sharepointcli`):** In Microsoft Entra eine App-Registrierung anlegen: öffentlicher Client, Redirect-URI `http://localhost`, delegierte Berechtigungen `Sites.Read.All`, `Files.Read.All`, `offline_access`, Admin-Zustimmung erteilen. Tenant-ID und Client-ID in `systeme/sharepoint/README.md` eintragen. Details: https://github.com/servas-ai/sharepointcli
+4. **SharePoint (für `sharepointcli`):** In Microsoft Entra eine App-Registrierung anlegen: öffentlicher Client, Redirect-URI `http://localhost`, delegierte Berechtigungen `User.Read`, `Sites.Read.All`, `Files.Read.All`, `offline_access`, Admin-Zustimmung erteilen. Tenant-ID und Client-ID in `systeme/sharepoint/README.md` eintragen. Details: https://github.com/servas-ai/sharepointcli
 5. **Qdrant (für `qdrantcli`):** pro Mitarbeiter ein eigener Token mit genau den Collections, die er sehen darf (Qdrant-JWT mit `access` und `exp`, oder Qdrant-Cloud-Key pro Collection). URL und Ausgabeweg in `systeme/qdrant/README.md` eintragen. Tokens nie per Chat verschicken.
 
 ---
