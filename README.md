@@ -14,6 +14,30 @@ review_by: 2027-10-10
 
 > **Kurzfassung für Menschen:** Gib deiner Harness diesen Link und sag: *„Richte das brain auf meinem Rechner ein, laut README.“* Die Harness erledigt den Rest und fragt dich nur, wenn sie etwas von dir braucht (Logins, Firmenangaben).
 
+
+## Features
+
+| | Feature | Was du davon hast | Status |
+| --- | --- | --- | --- |
+| 🧭 | **Trampolin-Navigation** | Die Harness findet in tausenden Einträgen das Richtige, ohne alles zu lesen | ✅ |
+| 🔑 | **Schlüssel-Katalog** | Projektnummern, Normen, Fehlercodes führen direkt zum richtigen Eintrag | ✅ |
+| 👁️ | **Perspektive je Login** | Jeder sieht nur, was er darf – die Harness weiß das und versucht nichts anderes | ✅ |
+| 🔒 | **Vertrauliche Workspaces** | Kunden, Projekte, HR, Geschäftsführung als eigene Repos – unsichtbar ohne Zugriff | ✅ |
+| 👤 | **Privater Bereich** | Eigene Notizen, Fundstellen, Recherchen im eigenen privaten Repo | ✅ |
+| 🧑‍⚖️ | **Sichtbarkeits-Review** | Vor jeder Änderung zeigt die Harness, *wer* die neue Info sehen wird – erst nach deinem Ja geht sie raus | ✅ |
+| 🔄 | **Synchronisieren** | Ein Befehl (automatisch beim Start) – alle haben denselben Stand | ✅ |
+| 📋 | **Abläufe & wiederkehrende Aufgaben** | „Jeden 14. Rechnungen holen“ – die Harness kennt den Ablauf und erinnert dich | 🧪 |
+| ❓ | **Hilfe für Menschen** | „Wie bekommen meine Kollegen das auch?“ – die Harness beantwortet es aus dem Brain | ✅ |
+| 📂 | **SharePoint-Anbindung** (`sharepointcli`) | Dokumente finden und lesen – mit deinem eigenen Microsoft-Login | 🧪 |
+| 🔎 | **Qdrant-Anbindung** (`qdrantcli`) | Vektorsuche mit deinem eigenen Token | ✅ |
+| 🆙 | **Update-Hinweis** | Die Harness sagt dir, wenn es eine neuere Version gibt | ✅ |
+| 💻 | **Windows, macOS, Linux** | Fertige Programme, keine Laufzeit nötig (kein Python, Node, .NET) | ✅ |
+| 🤖 | **Claude Code & Codex** | Funktioniert mit jeder Harness, die `AGENTS.md` liest | ✅ |
+| 🧬 | **Selbst wachsendes Regelwerk** | Neue Wissensarten (z. B. Cronjob-Liste) legt die Harness nach festen Regeln selbst an | 🗺️ |
+| 📤 | **Automatisches Einreichen & Bot-Merge** | Rechte-Tabelle und Pull Request auf Knopfdruck | 🗺️ |
+
+✅ verfügbar · 🧪 verfügbar, noch im Praxistest · 🗺️ geplant — Details, Testnachweise und nächste Schritte: [docs/FEATURE_MATRIX.md](docs/FEATURE_MATRIX.md)
+
 ---
 
 ## Inhalt

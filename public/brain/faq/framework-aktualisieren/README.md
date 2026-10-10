@@ -15,14 +15,14 @@ keys: [Update, Framework, Vorlage, Template, aktualisieren]
 
 | Framework (wird aktualisiert) | Firma (wird nie angefasst) |
 | --- | --- |
-| `BRAIN_VERSION`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `.claude/`, `.ignore`, `.gitattributes`, `.gitignore`, `templates/`, `public/brain/`, `tools/brain/README.md`, `tools/sharepointcli/README.md`, `tools/qdrantcli/README.md` | `regeln-firma.md`, `systeme/`, `public/` (außer `public/brain/`), `tools/*/debugging/` und eigene Tools, `workspaces/`, `personal/` |
+| `BRAIN_VERSION`, `docs/`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `.claude/`, `.ignore`, `.gitattributes`, `.gitignore`, `templates/`, `public/brain/`, `tools/brain/README.md`, `tools/sharepointcli/README.md`, `tools/qdrantcli/README.md` | `regeln-firma.md`, `systeme/`, `public/` (außer `public/brain/`), `tools/*/debugging/` und eigene Tools, `workspaces/`, `personal/` |
 
 ```bash
 cd <brain-root>
 git remote get-url template 2>/dev/null || git remote add template https://github.com/servas-ai/brain.git
 git fetch template
 git switch -c framework-update origin/main
-git checkout template/main -- BRAIN_VERSION AGENTS.md CLAUDE.md README.md .claude .ignore .gitattributes .gitignore templates public/brain \
+git checkout template/main -- BRAIN_VERSION docs AGENTS.md CLAUDE.md README.md .claude .ignore .gitattributes .gitignore templates public/brain \
   tools/brain/README.md tools/sharepointcli/README.md tools/qdrantcli/README.md
 git diff --cached --stat
 ```
