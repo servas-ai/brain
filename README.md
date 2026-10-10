@@ -25,7 +25,8 @@ review_by: 2027-10-10
 | 🔒 | **Vertrauliche Workspaces** | Kunden, Projekte, HR, Geschäftsführung als eigene Repos – unsichtbar ohne Zugriff | ✅ |
 | 👤 | **Privater Bereich** | Eigene Notizen, Fundstellen, Recherchen im eigenen privaten Repo | ✅ |
 | 🧑‍⚖️ | **Sichtbarkeits-Review** | Vor jeder Änderung zeigt die Harness, *wer* die neue Info sehen wird – erst nach deinem Ja geht sie raus | ✅ |
-| 🔄 | **Synchronisieren** | Ein Befehl (automatisch beim Start) – alle haben denselben Stand | ✅ |
+| 🔄 | **Synchronisieren** | Ein Befehl (automatisch beim Start) – alle haben denselben Stand, neue Workspaces kommen von selbst | ✅ |
+| ✍️ | **Pflicht zum Lernen** | Die Harness muss Neues ins Brain schreiben, bevor sie eine Arbeit beendet – sonst hält der Hook sie an | ✅ |
 | 📋 | **Abläufe & wiederkehrende Aufgaben** | „Jeden 14. Rechnungen holen“ – die Harness kennt den Ablauf und erinnert dich | 🧪 |
 | ❓ | **Hilfe für Menschen** | „Wie bekommen meine Kollegen das auch?“ – die Harness beantwortet es aus dem Brain | ✅ |
 | 📂 | **SharePoint-Anbindung** (`sharepointcli`) | Dokumente finden und lesen – mit deinem eigenen Microsoft-Login | 🧪 |
@@ -85,6 +86,8 @@ Workspaces und `personal/` werden lokal an ihren Platz geklont und sind im Haupt
 - **`brain sync`** (Claude Code: automatisch bei jedem Sitzungsstart) holt Hauptrepo, `personal/` und alle geklonten Workspaces (`git pull --ff-only`) und erzeugt danach die Übersichten lokal neu. Offline arbeitet die Harness mit dem letzten Stand.
 - **Eigene Änderungen gehen nie automatisch raus.** Persönliches wird direkt ins private `brain-personal` gepusht. Alles Geteilte durchläuft das **Review in der Harness**: Die Harness ermittelt per GitHub-API, wer jede neue oder geänderte Datei sehen wird, zeigt dem Menschen eine Tabelle *Datei · neu/geändert · was · sichtbar für* und reicht erst nach seinem ausdrücklichen Ja einen Pull Request mit genau dieser Tabelle ein (`public/brain/einreichen`).
 - **Update-Hinweis:** `brain sync` vergleicht die Framework-Version (`BRAIN_VERSION`) und die installierten Tools mit dem neuesten Stand auf GitHub (höchstens einmal am Tag, ohne Netz still) und schreibt Hinweise in `_perspektive.md`; die Harness sagt es dem Menschen beim Sitzungsstart. Manuell: `brain update-check`. Aktualisieren: `public/brain/faq/framework-aktualisieren` und `public/brain/faq/tools-aktualisieren`.
+- **Neue Workspaces kommen von selbst:** `brain sync` sucht über `gh` alle Repos der Firmen-Organisation mit dem Topic `brain-cell`, die der Login lesen darf, und hängt neue ein. Entzogene werden gemeldet (nicht gelöscht).
+- **Ins Brain schreiben ist Pflicht:** Der Hook `brain hook stop` hält die Harness an, wenn sie recherchiert oder länger gearbeitet hat, ohne etwas ins Brain zu schreiben. Sie muss dann das Neue festhalten oder begründen, warum es nichts gibt (höchstens einmal pro Stunde).
 - **Kollegen** bekommen neue Inhalte beim nächsten `brain sync`, sobald der Pull Request gemerged ist.
 
 ### Abläufe und wiederkehrende Aufgaben
@@ -253,7 +256,16 @@ brain doctor        # prüft Installation, PATH, OneDrive, longpaths
 brain check         # prüft das Regelwerk
 ```
 
-Claude Code führt `brain sync` danach bei jedem Sitzungsstart selbst aus (`.claude/settings.json`). **Codex:** Projekt-Hooks laufen dort derzeit nicht; trag `brain sync` als SessionStart-Hook in `~/.codex` ein oder führe es zu Beginn jeder Sitzung aus.
+**Claude Code** nutzt die Hooks aus `.claude/settings.json` automatisch: `brain sync` beim Start, `brain hook compact` nach einer Zusammenfassung, `brain hook stop` am Ende einer Arbeit (Pflicht, Wissen ins Brain zu schreiben).
+
+**Codex** lädt Projekt-Hooks derzeit nicht. Lege deshalb einmalig `~/.codex/hooks.json` an (gibt es die Datei schon, die Einträge ergänzen) und bestätige die Hooks beim ersten Start:
+
+```json
+{"hooks":{
+ "SessionStart":[{"hooks":[{"type":"command","command":"brain sync"}]}],
+ "Stop":[{"hooks":[{"type":"command","command":"brain hook stop"}]}]
+}}
+```
 
 ### Schritt 7 – Erstes Gespräch
 
@@ -306,7 +318,7 @@ Jeder Ordner mit `README.md` ist ein **Knoten** mit Frontmatter (`id`, `owner`, 
 
 | Tool | Was | Anleitung im Brain | Quellcode |
 | --- | --- | --- | --- |
-| `brain` | sync, check, clone-cell, doctor, update-check | `tools/brain/` | https://github.com/servas-ai/brain-cli |
+| `brain` | sync (inkl. neue Workspaces finden), check, clone-cell, doctor, update-check, hook | `tools/brain/` | https://github.com/servas-ai/brain-cli |
 | `sharepointcli` | SharePoint mit dem eigenen Microsoft-Login | `tools/sharepointcli/` | https://github.com/servas-ai/sharepointcli |
 | `qdrantcli` | Qdrant mit dem eigenen Token | `tools/qdrantcli/` | https://github.com/servas-ai/qdrantcli |
 

@@ -64,13 +64,16 @@ Die erste passende Zeile entscheidet:
 
 Wie ein Knoten aufgebaut ist: `public/brain/konventionen/README.md`. Vorlagen: `templates/` (für Abläufe und wiederkehrende Aufgaben: `templates/ablauf.md` mit `ausloeser`, `rhythmus`, `zustaendig`).
 
-## Aufgabe abschließen
+## Aufgabe abschließen (Pflicht)
 
-Hat die Aufgabe etwas gefunden, das die Landkarte nicht kannte:
+Das ist keine Bitte: Ohne diesen Schritt lernt das Brain nichts. Der Hook `brain hook stop` hält dich an, wenn du recherchiert oder länger gearbeitet hast, ohne ins Brain zu schreiben. Hat die Aufgabe etwas gefunden, das die Landkarte nicht kannte:
 
 1. Ergebnis für einen Workspace → in den Workspace.
 2. Der Weg dorthin → Fundstelle in `personal/fundstellen/` (Vorlage `templates/fundstelle.md`).
 3. Neues Problem mit einem Tool gelöst → Fehlerbild in `tools/<tool>/debugging/`.
+4. Neuer wiederkehrender Ablauf → `templates/ablauf.md`.
+
+Gibt es nichts Neues, sag deinem Menschen in einem Satz, warum. Vor einer Zusammenfassung des Verlaufs und vor dem Ende einer längeren Arbeit gilt dasselbe.
 
 **Einreichen nur nach `public.brain.einreichen`:** Sichtbarkeit per `gh api` ermitteln, deinem Menschen die Tabelle Datei | neu/geändert | was | sichtbar für zeigen, auf ein ausdrückliches Ja warten, erst dann Branch und Pull Request mit genau dieser Tabelle. Nie Leserkreise raten.
 

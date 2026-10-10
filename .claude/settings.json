@@ -1,7 +1,11 @@
 {
   "hooks": {
     "SessionStart": [
-      { "hooks": [ { "type": "command", "command": "brain sync || echo 'brain sync fehlgeschlagen – siehe tools/brain/README.md'" } ] }
+      { "hooks": [ { "type": "command", "command": "brain sync || echo 'brain sync fehlgeschlagen – siehe tools/brain/README.md'" } ] },
+      { "matcher": "compact", "hooks": [ { "type": "command", "command": "brain hook compact" } ] }
+    ],
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "brain hook stop" } ] }
     ]
   }
 }
