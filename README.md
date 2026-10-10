@@ -60,6 +60,7 @@ Workspaces und `personal/` werden lokal an ihren Platz geklont und sind im Haupt
 - **GitHub ist die einzige Quelle.** Gültig ist, was auf `main` des Firmen-Repos und der Workspace-Repos steht.
 - **`brain sync`** (Claude Code: automatisch bei jedem Sitzungsstart) holt Hauptrepo, `personal/` und alle geklonten Workspaces (`git pull --ff-only`) und erzeugt danach die Übersichten lokal neu. Offline arbeitet die Harness mit dem letzten Stand.
 - **Eigene Änderungen gehen nie automatisch raus.** Persönliches wird direkt ins private `brain-personal` gepusht. Alles Geteilte durchläuft das **Review in der Harness**: Die Harness ermittelt per GitHub-API, wer jede neue oder geänderte Datei sehen wird, zeigt dem Menschen eine Tabelle *Datei · neu/geändert · was · sichtbar für* und reicht erst nach seinem ausdrücklichen Ja einen Pull Request mit genau dieser Tabelle ein (`public/brain/einreichen`).
+- **Update-Hinweis:** `brain sync` vergleicht die Framework-Version (`BRAIN_VERSION`) und die installierten Tools mit dem neuesten Stand auf GitHub (höchstens einmal am Tag, ohne Netz still) und schreibt Hinweise in `_perspektive.md`; die Harness sagt es dem Menschen beim Sitzungsstart. Manuell: `brain update-check`. Aktualisieren: `public/brain/faq/framework-aktualisieren` und `public/brain/faq/tools-aktualisieren`.
 - **Kollegen** bekommen neue Inhalte beim nächsten `brain sync`, sobald der Pull Request gemerged ist.
 
 ### Abläufe und wiederkehrende Aufgaben
@@ -281,7 +282,7 @@ Jeder Ordner mit `README.md` ist ein **Knoten** mit Frontmatter (`id`, `owner`, 
 
 | Tool | Was | Anleitung im Brain | Quellcode |
 | --- | --- | --- | --- |
-| `brain` | sync, check, clone-cell, doctor | `tools/brain/` | https://github.com/servas-ai/brain-cli |
+| `brain` | sync, check, clone-cell, doctor, update-check | `tools/brain/` | https://github.com/servas-ai/brain-cli |
 | `sharepointcli` | SharePoint mit dem eigenen Microsoft-Login | `tools/sharepointcli/` | https://github.com/servas-ai/sharepointcli |
 | `qdrantcli` | Qdrant mit dem eigenen Token | `tools/qdrantcli/` | https://github.com/servas-ai/qdrantcli |
 

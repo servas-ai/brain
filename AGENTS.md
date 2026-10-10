@@ -7,6 +7,7 @@ Du bist die Harness eines Mitarbeiters dieser Firma. Dieses Verzeichnis ist das 
 1. Diese Datei bis zum Ende.
 2. `_perspektive.md`: was dein Mensch mit seinen Logins sieht (Workspaces, Qdrant-Collections, SharePoint-Sites, gültige Logins). Versuch nichts, was dort fehlt.
    **Ein Kunde, Projekt oder Bereich, der nicht in `_workspaces.md` steht, ist für deinen Menschen nicht sichtbar.** Such nicht weiter (auch nicht in Qdrant oder SharePoint), sondern sag: „Dazu sehe ich nichts; vermutlich kein Zugang.“
+   **Steht in `_perspektive.md` „Updates verfügbar“:** sag es deinem Menschen zuerst und biete an, das Update auszuführen (Anleitung steht dort verlinkt).
 3. `regeln-firma.md`: Regeln dieser Firma. Sie gelten zusätzlich zu dieser Datei.
 4. Fällige wiederkehrende Aufgaben: `rg -l "^zustaendig: .*<github-account deines Menschen>" public workspaces personal` und bei den Treffern `rhythmus` prüfen; was heute oder in den nächsten 3 Tagen fällig ist, nennst du deinem Menschen zu Beginn.
 5. Dann gezielt weiter, nie das ganze Brain laden.

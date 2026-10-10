@@ -11,18 +11,18 @@ keys: [Update, Framework, Vorlage, Template, aktualisieren]
 
 # Wie bringe ich unser Brain auf den neuesten Stand der Vorlage?
 
-Ein aus der Vorlage erzeugtes Repo hat keine gemeinsame Git-Historie mit ihr; ein automatisches Update gibt es in Version 0.1 noch nicht. Aktualisiert werden nur die **Framework-Dateien** – Firmeninhalte bleiben unberührt.
+`brain sync` vergleicht bei jedem Lauf `BRAIN_VERSION` mit der Vorlage und meldet neuere Versionen in `_perspektive.md` (manuell: `brain update-check`). Ein aus der Vorlage erzeugtes Repo hat keine gemeinsame Git-Historie mit ihr, deshalb übernimmt man die Framework-Dateien gezielt. Aktualisiert werden nur die **Framework-Dateien** – Firmeninhalte bleiben unberührt.
 
 | Framework (wird aktualisiert) | Firma (wird nie angefasst) |
 | --- | --- |
-| `AGENTS.md`, `CLAUDE.md`, `README.md`, `.claude/`, `.ignore`, `.gitattributes`, `.gitignore`, `templates/`, `public/brain/`, `tools/brain/README.md`, `tools/sharepointcli/README.md`, `tools/qdrantcli/README.md` | `regeln-firma.md`, `systeme/`, `public/` (außer `public/brain/`), `tools/*/debugging/` und eigene Tools, `workspaces/`, `personal/` |
+| `BRAIN_VERSION`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `.claude/`, `.ignore`, `.gitattributes`, `.gitignore`, `templates/`, `public/brain/`, `tools/brain/README.md`, `tools/sharepointcli/README.md`, `tools/qdrantcli/README.md` | `regeln-firma.md`, `systeme/`, `public/` (außer `public/brain/`), `tools/*/debugging/` und eigene Tools, `workspaces/`, `personal/` |
 
 ```bash
 cd <brain-root>
 git remote get-url template 2>/dev/null || git remote add template https://github.com/servas-ai/brain.git
 git fetch template
 git switch -c framework-update origin/main
-git checkout template/main -- AGENTS.md CLAUDE.md README.md .claude .ignore .gitattributes .gitignore templates public/brain \
+git checkout template/main -- BRAIN_VERSION AGENTS.md CLAUDE.md README.md .claude .ignore .gitattributes .gitignore templates public/brain \
   tools/brain/README.md tools/sharepointcli/README.md tools/qdrantcli/README.md
 git diff --cached --stat
 ```

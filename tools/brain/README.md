@@ -21,6 +21,7 @@ keys: [brain, brain sync, brain check]
 | bevor du Änderungen einreichst | `brain check` |
 | dein Mensch bekommt Zugriff auf einen neuen Workspace | `brain clone-cell <git-url>` |
 | irgendetwas funktioniert nicht | `brain doctor` |
+| gibt es neuere Versionen von Framework oder Tools? | `brain update-check` (macht `brain sync` automatisch, einmal am Tag) |
 
 ## Was `brain sync` tut
 
