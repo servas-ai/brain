@@ -20,12 +20,13 @@ review_by: 2027-10-10
 
 1. [Was das Brain ist](#was-das-brain-ist)
 2. [Wie es funktioniert](#wie-es-funktioniert)
-3. [Setup für die Harness](#setup-für-die-harness) ← **Harness: hier anfangen**
-4. [Einmalige Einrichtung pro Firma (Admin)](#einmalige-einrichtung-pro-firma-admin)
-5. [Aufbau des Repos](#aufbau-des-repos)
-6. [Tools](#tools)
-7. [Sicherheit und Datenschutz](#sicherheit-und-datenschutz)
-8. [Stand und Grenzen](#stand-und-grenzen)
+3. [Voraussetzungen](#voraussetzungen)
+4. [Setup für die Harness](#setup-für-die-harness) ← **Harness: hier anfangen**
+5. [Einmalige Einrichtung pro Firma (Admin)](#einmalige-einrichtung-pro-firma-admin)
+6. [Aufbau des Repos](#aufbau-des-repos)
+7. [Tools](#tools)
+8. [Sicherheit und Datenschutz](#sicherheit-und-datenschutz)
+9. [Stand und Grenzen](#stand-und-grenzen)
 
 ---
 
@@ -65,19 +66,44 @@ Workspaces und `personal/` werden lokal an ihren Platz geklont und sind im Haupt
 
 ---
 
+## Voraussetzungen
+
+### Software auf dem Rechner
+
+| Was | Wofür | Windows | macOS | Linux (Debian/Ubuntu) |
+| --- | --- | --- | --- | --- |
+| **Git** ≥ 2.40 (Windows: inkl. Git Bash) | Brain und Zellen klonen, synchronisieren | `winget install --id Git.Git -e` | `brew install git` | `sudo apt install git` |
+| **GitHub CLI** `gh` ≥ 2.40 | Anmelden, Repos klonen und anlegen, Workspaces finden | `winget install --id GitHub.cli -e` | `brew install gh` | `sudo apt install gh` |
+| **ripgrep** `rg` | Suche im Katalog und im Brain (`AGENTS.md`) | `winget install --id BurntSushi.ripgrep.MSVC -e` | `brew install ripgrep` | `sudo apt install ripgrep` |
+| **Eine Harness** | liest und schreibt das Brain | Claude Code oder Codex CLI (jede Harness, die `AGENTS.md` liest) | | |
+| **Webbrowser** | Anmeldung bei GitHub und Microsoft | vorhanden | vorhanden | vorhanden |
+| `brain`, `sharepointcli`, `qdrantcli` | siehe [Tools](#tools) | Download in Schritt 1 | Download in Schritt 1 | Download in Schritt 1 |
+
+Mitgeliefert und nicht extra zu installieren: PowerShell 5.1+ (Windows), `curl`, `tar` (macOS, Linux). **Nicht** nötig: Python, Node.js, .NET, Docker – die Tools sind einzelne Programme ohne Laufzeitabhängigkeiten.
+
+Betriebssysteme: Windows 10/11, macOS 12 oder neuer (Intel und Apple Silicon), Linux amd64/arm64.
+
+### Zugänge (pro Mitarbeiter)
+
+| Zugang | Wofür | Woher |
+| --- | --- | --- |
+| GitHub-Account, Mitglied der Firmen-Organisation | Brain und Workspaces lesen und ändern; privates Repo `brain-personal` | Admin der Firma lädt ein |
+| Microsoft-365-Account der Firma | `sharepointcli` (nur, wenn die Firma SharePoint nutzt) | vorhanden |
+| Persönlicher Qdrant-Token | `qdrantcli` (nur, wenn die Firma Qdrant nutzt) | Qdrant-Verwaltung der Firma |
+
+### Netzwerk
+
+Erreichbar sein müssen: `github.com`, `api.github.com`, `objects.githubusercontent.com` (Downloads); für SharePoint `login.microsoftonline.com`, `graph.microsoft.com`; für Qdrant die URL der Firmen-Instanz (oft nur im Büro oder per VPN).
+
+---
+
 ## Setup für die Harness
 
 > **An die Harness:** Führe die Schritte der Reihe nach aus. Erkläre deinem Menschen kurz, was du tust. Frag ihn nur nach Dingen, die du nicht selbst herausfinden kannst (markiert mit 🙋). Zugangsdaten gibt der Mensch **direkt in das jeweilige Programm** ein – nie in den Chat.
 
 ### Schritt 0 – Voraussetzungen prüfen
 
-Prüfe, ob `git` und `gh` (GitHub CLI) vorhanden sind (`git --version`, `gh --version`). Fehlt etwas:
-
-| System | Befehl |
-| --- | --- |
-| Windows | `winget install --id Git.Git -e` und `winget install --id GitHub.cli -e` (danach neues Terminal) |
-| macOS | `brew install git gh` |
-| Linux (Debian/Ubuntu) | `sudo apt install git gh` |
+Prüfe die Software aus [Voraussetzungen](#voraussetzungen): `git --version`, `gh --version`, `rg --version`. Fehlt etwas, installiere es mit dem Befehl aus der Tabelle (Windows: danach ein neues Terminal öffnen, damit der `PATH` stimmt).
 
 🙋 Dann den Menschen bei GitHub anmelden lassen: `gh auth login` (Browser-Login, interaktiv – der Mensch führt es selbst aus).
 
