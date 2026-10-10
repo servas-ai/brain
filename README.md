@@ -101,10 +101,11 @@ $bin  = "$env:LOCALAPPDATA\Programs\servas-brain\bin"
 New-Item -ItemType Directory -Force -Path $bin | Out-Null
 foreach ($t in 'brain-cli:brain','sharepointcli:sharepointcli','qdrantcli:qdrantcli') {
   $repo, $tool = $t.Split(':')
-  $zip = "$env:TEMP\$tool.zip"
+  $zip = "$env:TEMP\$tool.zip"; $tmp = "$env:TEMP\$tool-x"
   Invoke-WebRequest "https://github.com/servas-ai/$repo/releases/latest/download/${tool}_windows_$arch.zip" -OutFile $zip
-  Expand-Archive $zip -DestinationPath $bin -Force
-  Remove-Item $zip
+  Expand-Archive $zip -DestinationPath $tmp -Force
+  Get-ChildItem $tmp -Recurse -Filter "$tool.exe" | Select-Object -First 1 | Copy-Item -Destination $bin -Force
+  Remove-Item $zip, $tmp -Recurse -Force
 }
 $userPath = [Environment]::GetEnvironmentVariable('Path', 'User')
 if ($userPath -notlike "*$bin*") { [Environment]::SetEnvironmentVariable('Path', "$userPath;$bin", 'User') }
@@ -120,8 +121,9 @@ arch=$(uname -m); case "$arch" in x86_64) arch=amd64;; aarch64|arm64) arch=arm64
 bin="$HOME/.local/bin"; mkdir -p "$bin"
 for t in brain-cli:brain sharepointcli:sharepointcli qdrantcli:qdrantcli; do
   repo=${t%%:*}; tool=${t##*:}
-  curl -fsSL "https://github.com/servas-ai/$repo/releases/latest/download/${tool}_${os}_${arch}.tar.gz" | tar -xz -C "$bin" "$tool"
-  chmod +x "$bin/$tool"
+  tmp=$(mktemp -d)
+  curl -fsSL "https://github.com/servas-ai/$repo/releases/latest/download/${tool}_${os}_${arch}.tar.gz" | tar -xz -C "$tmp"
+  install -m 755 "$(find "$tmp" -type f -name "$tool" | head -1)" "$bin/$tool"; rm -rf "$tmp"
 done
 case ":$PATH:" in *":$bin:"*) ;; *) echo "export PATH=\"$bin:\$PATH\"" >> "$HOME/.$(basename "$SHELL")rc"; export PATH="$bin:$PATH";; esac
 # macOS: falls Gatekeeper blockiert:  xattr -d com.apple.quarantine "$bin"/{brain,sharepointcli,qdrantcli}
