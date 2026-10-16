@@ -33,7 +33,7 @@ review_by: 2027-10-10
 | 🔎 | **Qdrant-Anbindung** (`qdrantcli`) | Vektorsuche mit deinem eigenen Token | ✅ |
 | 🆙 | **Update-Hinweis** | Die Harness sagt dir, wenn es eine neuere Version gibt | ✅ |
 | 💻 | **Windows, macOS, Linux** | Fertige Programme, keine Laufzeit nötig (kein Python, Node, .NET) | ✅ |
-| 🤖 | **Claude Code & Codex** | Funktioniert mit jeder Harness, die `AGENTS.md` liest | ✅ |
+| 🤖 | **Claude Code, Codex & Grok CLI** | Funktioniert mit jeder Harness, die `AGENTS.md` liest | ✅ |
 | 🧬 | **Selbst wachsendes Regelwerk** | Neue Wissensarten (z. B. Cronjob-Liste) legt die Harness nach festen Regeln selbst an | 🗺️ |
 | 📤 | **Automatisches Einreichen & Bot-Merge** | Rechte-Tabelle und Pull Request auf Knopfdruck | 🗺️ |
 
@@ -266,6 +266,8 @@ brain check         # prüft das Regelwerk
  "Stop":[{"hooks":[{"type":"command","command":"brain hook stop"}]}]
 }}
 ```
+
+**Grok CLI** liest `AGENTS.md`/`CLAUDE.md` und die Hooks aus `.claude/settings.json` selbst – aber erst, wenn der Ordner vertraut ist. Einmalig im Brain-Ordner `/hooks-trust` ausführen (oder `grok --trust` starten). Dann laufen `brain sync` beim Start und `brain hook stop` am Ende wie bei Claude Code (braucht `brain` ab 0.1.3). Die Erinnerung nach einer Zusammenfassung (`brain hook compact`) gibt es unter Grok nicht; der Stop-Hook fängt das Wesentliche ab.
 
 ### Schritt 7 – Erstes Gespräch
 
