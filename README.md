@@ -269,6 +269,27 @@ brain check         # prüft das Regelwerk
 
 **Grok CLI** liest `AGENTS.md`/`CLAUDE.md` und die Hooks aus `.claude/settings.json` selbst – aber erst, wenn der Ordner vertraut ist. Einmalig im Brain-Ordner `/hooks-trust` ausführen (oder `grok --trust` starten). Dann laufen `brain sync` beim Start und `brain hook stop` am Ende wie bei Claude Code (braucht `brain` ab 0.1.3). Die Erinnerung nach einer Zusammenfassung (`brain hook compact`) gibt es unter Grok nicht; der Stop-Hook fängt das Wesentliche ab.
 
+**Brain zuerst – auch außerhalb von `~/brain`.** Die Hooks und `AGENTS.md` greifen nur, wenn die Harness im Brain-Ordner startet. Damit sie in **jedem** Ordner zuerst im Brain nachschaut, ergänze einmalig die globale Anweisungsdatei der Harness (gibt es sie schon, den Block anhängen):
+
+| Harness | Datei |
+| --- | --- |
+| Claude Code | `~/.claude/CLAUDE.md` (Windows `%USERPROFILE%\.claude\CLAUDE.md`) |
+| Codex | `~/.codex/AGENTS.md` (Windows `%USERPROFILE%\.codex\AGENTS.md`) |
+
+```markdown
+# Brain zuerst
+
+Das Wissen der Firma steht im **Brain unter `~/brain`**: Firma, Kunden, Partner, Produkte, Projekte, Personen, Systeme, Tools, Entscheidungen.
+
+- Bei **jeder** Frage zu diesen Themen suchst du **zuerst im Brain**, bevor du dein eigenes Gedächtnis (Memory), das Web oder Rückfragen nutzt. Auch wenn du glaubst, die Antwort zu kennen.
+- So: `~/brain/AGENTS.md` lesen (kurz). Dann Trampolin: feste Begriffe (Firmen, Produkte, Personen, Kürzel) mit `rg -i "<begriff>" ~/brain/_katalog/`; Kunden und Partner über `~/brain/_workspaces.md` → Workspace → `_kinder.md`; sonst `rg -i "<begriff>" ~/brain --glob "*.md"`.
+- Antworte aus dem Brain und nenne den Knoten (`id`). Dein eigenes Memory ergänzt nur (Rechner, Harness, Zugänge). Widerspricht es dem Brain, gilt das Brain.
+- Steht nichts im Brain, sag das in einem Satz, dann andere Quellen.
+- Neues Wissen über Firma, Kunden, Partner oder Personen gehört ins Brain (Regeln: `~/brain/AGENTS.md`), nicht nur in dein Memory.
+```
+
+Unter Windows im Block `~/brain` durch `%USERPROFILE%\brain` ersetzen.
+
 ### Schritt 7 – Erstes Gespräch
 
 Ist das Repo der Firma noch frisch (Platzhalter in `systeme/` und `regeln-firma.md`), fülle mit deinem Menschen aus:
