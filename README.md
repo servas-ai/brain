@@ -275,6 +275,7 @@ brain check         # prüft das Regelwerk
 | --- | --- |
 | Claude Code | `~/.claude/CLAUDE.md` (Windows `%USERPROFILE%\.claude\CLAUDE.md`) |
 | Codex | `~/.codex/AGENTS.md` (Windows `%USERPROFILE%\.codex\AGENTS.md`) |
+| Grok CLI | `~/.grok/AGENTS.md` (Windows `%USERPROFILE%\.grok\AGENTS.md`); liest zusätzlich `~/.claude/CLAUDE.md` mit, solange die Claude-Kompatibilität an ist (Standard). Prüfen: `grok inspect` zeigt die Datei als `global` |
 
 ```markdown
 # Brain zuerst
