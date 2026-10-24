@@ -394,9 +394,9 @@ flowchart LR
  C --> O[Answer with provenance]
 ```
 
-### 🖼️ Screenshot policy
+### 🖼️ Screenshots
 
-No screenshot reference was found in the current README. Add a real screenshot only after capturing the actual UI at a pinned build; no mock screenshot is represented as production evidence.
+No screenshot image is present in the README at the reviewed revision. Capture a real UI screenshot from a pinned, tested build before adding one; do not use a mockup as runtime evidence.
 
 ### ✅ Readiness checklist
 
