@@ -368,3 +368,47 @@ Version **0.1** (Oktober 2026).
 ---
 
 Lizenz: MIT
+
+---
+
+## 🧭 SERVAS Stack Map
+
+> **servas-ai/brain** · Git-based company/workspace map. This is an architecture/ownership guide, not a production-acceptance claim.
+
+### ✨ Scope
+
+- **Role:** Git-based company/workspace map.
+- **Boundary:** this repository owns only its documented component; other services remain their own source of truth.
+- **Security:** least privilege, explicit principal/tenant scope, no secrets in Git or prompts, and read-only reconciliation for uncertain effects.
+- **Release:** pin the source SHA and distinguish unit/synthetic tests from live acceptance.
+
+### 🗺️ System diagram
+
+```mermaid
+flowchart LR
+ S[Allowed source] --> A[ACL + revision]
+ A --> I[Bounded ingest]
+ I --> V[Versioned index]
+ V --> R[Scoped retrieval]
+ R --> C[Recheck source + ACL]
+ C --> O[Answer with provenance]
+```
+
+### 🖼️ Screenshot policy
+
+No screenshot reference was found in the current README. Add a real screenshot only after capturing the actual UI at a pinned build; no mock screenshot is represented as production evidence.
+
+### ✅ Readiness checklist
+
+- [ ] Source and deployed revision recorded.
+- [ ] Permissions and tenant/company scope verified.
+- [ ] Failure, retry, revoke and restore tested.
+- [ ] Runtime evidence linked; unit tests alone are not product acceptance.
+- [ ] UI screenshots, if relevant, captured from the actual tested build.
+
+### 🔗 Integration references
+
+- [Unified SERVAS stack](https://github.com/Martin-Hausleitner/hans/blob/3cfe8247af2df90f8c7173251d7cf2cf9a7a29ff/sources/transcripts/meetings/2026-10-24-kira-servas-review/SERVAS-GESAMTSTACK-MATRIX-MACRO-PAPERCLIP-HANS.md)
+- [WorkOS execution plan R3.1](https://github.com/Martin-Hausleitner/hans/blob/3cf6690f0c7c0f829f81a2c4f54e3463444a2a34/sources/transcripts/meetings/2026-10-24-kira-servas-review/repo-review-r2/EXECUTION-PLAN-R3.md)
+
+*Visual README overlay for review. This section does not imply that the component is live, merged or accepted.*
